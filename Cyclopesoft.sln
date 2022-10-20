@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cyclopesoft.PresentationLayer", "Cyclopesoft.PresentationLayer", "{A17D969C-8DF4-4FBB-BBCA-0E1783DDA529}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cyclopesoft.DataLayer", "Cyclopesoft.DataLayer", "{BEF3D8D8-A508-4D1C-8C06-F9DF5D013C8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyclopesoft.DataLayer", "Cyclopesoft.DataLayer\Cyclopesoft.DataLayer.csproj", "{72301859-B990-4024-885C-9863874FF24C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cyclopesoft.BussinesLayer", "Cyclopesoft.BussinesLayer", "{8BA5EEC0-4D6E-46CD-9F04-5195D926C4D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyclopesoft.BussinesLayer", "Cyclopesoft.BussinesLayer\Cyclopesoft.BussinesLayer.csproj", "{A376466B-D37F-4663-B60A-BDA7C1E3BA33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cyclopesoft.ServicesLayer", "Cyclopesoft.ServicesLayer", "{B629116F-B677-4181-9979-0182359DE779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyclopesoft.ServicesLayer", "Cyclopesoft.ServicesLayer\Cyclopesoft.ServicesLayer.csproj", "{C6F6DFA9-4FF0-4600-85A2-2851CA2C5364}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{9450F7B3-5EBE-44E5-A430-359A95890CB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyclope", "Cyclope\Cyclope.csproj", "{EBA05870-24A8-4D54-900E-8760652EAB98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72301859-B990-4024-885C-9863874FF24C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72301859-B990-4024-885C-9863874FF24C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72301859-B990-4024-885C-9863874FF24C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72301859-B990-4024-885C-9863874FF24C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A376466B-D37F-4663-B60A-BDA7C1E3BA33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A376466B-D37F-4663-B60A-BDA7C1E3BA33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A376466B-D37F-4663-B60A-BDA7C1E3BA33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A376466B-D37F-4663-B60A-BDA7C1E3BA33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6F6DFA9-4FF0-4600-85A2-2851CA2C5364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F6DFA9-4FF0-4600-85A2-2851CA2C5364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F6DFA9-4FF0-4600-85A2-2851CA2C5364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F6DFA9-4FF0-4600-85A2-2851CA2C5364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA05870-24A8-4D54-900E-8760652EAB98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA05870-24A8-4D54-900E-8760652EAB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA05870-24A8-4D54-900E-8760652EAB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA05870-24A8-4D54-900E-8760652EAB98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{72301859-B990-4024-885C-9863874FF24C} = {BEF3D8D8-A508-4D1C-8C06-F9DF5D013C8C}
+		{A376466B-D37F-4663-B60A-BDA7C1E3BA33} = {8BA5EEC0-4D6E-46CD-9F04-5195D926C4D3}
+		{C6F6DFA9-4FF0-4600-85A2-2851CA2C5364} = {B629116F-B677-4181-9979-0182359DE779}
+		{EBA05870-24A8-4D54-900E-8760652EAB98} = {A17D969C-8DF4-4FBB-BBCA-0E1783DDA529}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21A70EE4-10EF-4DDB-93B8-2BA912095913}
+	EndGlobalSection
+EndGlobal
