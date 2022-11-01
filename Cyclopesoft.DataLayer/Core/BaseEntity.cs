@@ -3,7 +3,7 @@ using System;
 
 namespace Cyclopesoft.DataLayer.Core
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         public BaseEntity(){
             this.Creation_Date = DateTime.Now;
