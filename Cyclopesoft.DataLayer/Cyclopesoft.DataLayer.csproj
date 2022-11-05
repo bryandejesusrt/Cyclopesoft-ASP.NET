@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Conceptual\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>
