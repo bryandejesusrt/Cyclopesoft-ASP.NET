@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Conceptual\" />
+    <Compile Remove="Conceptual\**" />
+    <EmbeddedResource Remove="Conceptual\**" />
+    <None Remove="Conceptual\**" />
   </ItemGroup>
 
 </Project>

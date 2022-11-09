@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d9bfb963493a451a8ab9a40ce7ee6df6" Name="Diagram1" >
+        <EntityTypeShape EntityType="CyclopesoftModel.Person" Width="1.5" PointX="1.75" PointY="0.5" />
+        <EntityTypeShape EntityType="CyclopesoftModel.Client" Width="1.5" PointX="4.5" PointY="0.5" IsExpanded="true" />
+        <InheritanceConnector EntityType="CyclopesoftModel.Client" />
+        <EntityTypeShape EntityType="CyclopesoftModel.Invoice" Width="1.5" PointX="8" PointY="3.375" />
+        <InheritanceConnector EntityType="CyclopesoftModel.Invoice" />
+        <EntityTypeShape EntityType="CyclopesoftModel.InvoiceDetail" Width="1.5" PointX="4.75" PointY="4.125" />
+        <InheritanceConnector EntityType="CyclopesoftModel.InvoiceDetail" />
+        <EntityTypeShape EntityType="CyclopesoftModel.Product" Width="1.5" PointX="1.875" PointY="3.5" />
+        <InheritanceConnector EntityType="CyclopesoftModel.Product" />
+        <EntityTypeShape EntityType="CyclopesoftModel.User" Width="1.5" PointX="7" PointY="0.625" />
+        <InheritanceConnector EntityType="CyclopesoftModel.User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
