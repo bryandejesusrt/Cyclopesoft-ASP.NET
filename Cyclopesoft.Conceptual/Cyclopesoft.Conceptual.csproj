@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2500C839-1E2E-4F0A-AD99-C951F2C9F3E1}</ProjectGuid>
+    <ProjectGuid>{BD6D94B0-E451-4DED-ACB8-9E7B6788D5DC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Cyclopesoft.Conceptual</RootNamespace>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CyclopesoftModel.Designer.cs">
+    <Compile Include="Model\CyclopesoftModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CyclopesoftModel.edmx</DependentUpon>
@@ -51,19 +51,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="CyclopesoftModel.edmx">
+    <EntityDeploy Include="Model\CyclopesoftModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CyclopesoftModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="CyclopesoftModel.edmx.diagram">
+    <None Include="Model\CyclopesoftModel.edmx.diagram">
       <DependentUpon>CyclopesoftModel.edmx</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

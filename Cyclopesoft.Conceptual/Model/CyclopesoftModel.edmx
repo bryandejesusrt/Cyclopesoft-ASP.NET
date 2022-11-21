@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="CyclopesoftModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="CyclopesoftModelTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CyclopesoftModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CyclopesoftModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PersonSet" EntityType="CyclopesoftModel.Person" />
+          <EntitySet Name="ProductSet" EntityType="CyclopesoftModel.Product" />
+          <AssociationSet Name="ClientProduct" Association="CyclopesoftModel.ClientProduct">
+            <End Role="Client" EntitySet="PersonSet" />
+            <End Role="Product" EntitySet="ProductSet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="User" BaseType="CyclopesoftModel.Person">
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Rol" Type="String" Nullable="false" />
+          <Property Name="Img" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client" BaseType="CyclopesoftModel.Person" >
+          <Property Name="type" Type="String" Nullable="false" />
+          <Property Name="Id_Fiscal" Type="String" Nullable="false" />
+          <Property Name="RNC" Type="String" Nullable="false" />
+          <Property Name="business_Name" Type="String" Nullable="false" />
+          <Property Name="Directin" Type="String" Nullable="false" />
+          <Property Name="Note" Type="String" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="CyclopesoftModel.ClientProduct" FromRole="Client" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Invoice" BaseType="CyclopesoftModel.Client">
+          <Property Name="Serie" Type="String" Nullable="false" />
+          <Property Name="Payment_Type" Type="String" Nullable="false" />
+          <Property Name="Client_Id" Type="String" Nullable="false" />
+          <Property Name="User_Id" Type="String" Nullable="false" />
+          <Property Name="Subtotal" Type="String" Nullable="false" />
+          <Property Name="Taxes" Type="String" Nullable="false" />
+          <Property Name="Total" Type="String" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvoiceDetail" BaseType="CyclopesoftModel.Invoice">
+          <Property Name="Id_Product" Type="String" Nullable="false" />
+          <Property Name="Amount" Type="String" Nullable="false" />
+          <Property Name="Sale_Price" Type="String" Nullable="false" />
+          <Property Name="Discout" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bar_Code" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Distribution" Type="String" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" />
+          <Property Name="Cost_Price" Type="String" Nullable="false" />
+          <Property Name="Gain" Type="String" Nullable="false" />
+          <Property Name="Sale_Price" Type="String" Nullable="false" />
+          <Property Name="Wholesale_Price" Type="String" Nullable="false" />
+          <Property Name="Minimum" Type="String" Nullable="false" />
+          <Property Name="Maximum" Type="String" Nullable="false" />
+          <Property Name="Stock" Type="String" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="CyclopesoftModel.ClientProduct" FromRole="Product" ToRole="Client" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ClientProduct">
+          <End Type="CyclopesoftModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="CyclopesoftModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="CyclopesoftModel" />
+        <Alias Key="Target" Value="CyclopesoftModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="CyclopesoftModelContainer" StorageEntityContainer="CyclopesoftModelTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
