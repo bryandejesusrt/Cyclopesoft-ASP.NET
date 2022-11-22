@@ -16,7 +16,7 @@ namespace Cyclopesoft.DataLayer.Entities
         public int Sale_Price { get; set; }
         public int Wholesale_Price { get; set; }
 
-        //inventari
+        //inventory
         public int Minimum { get; set; }
         public int Maximum { get; set; }
         public int Stock { get; set; }

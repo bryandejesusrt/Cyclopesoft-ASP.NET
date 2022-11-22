@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Core\" />
+    <ProjectReference Include="..\Cyclopesoft.DataLayer\Cyclopesoft.DataLayer.csproj" />
   </ItemGroup>
+
+
 
 </Project>
