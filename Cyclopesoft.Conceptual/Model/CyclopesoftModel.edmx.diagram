@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="CyclopesoftModel.Client" Width="1.5" PointX="5.875" PointY="0.5" />
         <InheritanceConnector EntityType="CyclopesoftModel.Client" />
         <EntityTypeShape EntityType="CyclopesoftModel.Invoice" Width="1.5" PointX="9.875" PointY="1" />
-        <EntityTypeShape EntityType="CyclopesoftModel.InvoiceDetail" Width="1.5" PointX="7.625" PointY="2.75" />
+        <EntityTypeShape EntityType="CyclopesoftModel.InvoiceDetail" Width="1.5" PointX="7.5" PointY="4.375" />
         <EntityTypeShape EntityType="CyclopesoftModel.Product" Width="1.5" PointX="3.375" PointY="1.25" />
         <InheritanceConnector EntityType="CyclopesoftModel.User" />
         <AssociationConnector Association="CyclopesoftModel.ClientProduct" />
