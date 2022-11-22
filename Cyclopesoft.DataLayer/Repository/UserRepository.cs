@@ -4,24 +4,24 @@ using Cyclopesoft.DataLayer.Interface;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
+
 namespace Cyclopesoft.DataLayer.Repository
 {
-    public class ClientRepository : IClientRepository
+    public class UserRepository : IUserRepository
     {
         private readonly CyclopesoftContext context;
-        private readonly ILogger<ClientRepository> logger;
+        private readonly ILogger<InvoiceDetailRepository> logger;
 
-        public ClientRepository(CyclopesoftContext context, ILogger<ClientRepository> logger)
+        public UserRepository(CyclopesoftContext context, ILogger<InvoiceDetailRepository> logger)
         {
             this.context = context;
             this.logger = logger;
         }
-
-        public void Remove(Client client)
+        public void Remove(User user)
         {
             try
             {
-                context.Clients.Remove(client);
+                context.Users.Remove(user);
             }
             catch (Exception ex)
             {
@@ -30,11 +30,11 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Save(Client client)
+        public void Save(User user)
         {
             try
             {
-                context.Clients.Add(client);
+                context.Users.Add(user);
             }
             catch (Exception ex)
             {
@@ -43,11 +43,11 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Update(Client client)
+        public void Update(User user)
         {
             try
             {
-                context.Clients.Update(client);
+                context.Users.Update(user);
             }
             catch (Exception ex)
             {
@@ -55,30 +55,33 @@ namespace Cyclopesoft.DataLayer.Repository
                 this.logger.LogError($"Error: {ex.Message}", ex.ToString());
             }
         }
-        public Client GetClient(int fiscalId)
+        public User GetUser(int id)
         {
             try
             {
-                return context.Clients.Find(fiscalId);
+                return context.Users.Find(id);
             }
             catch (Exception ex)
             {
-                this.logger.LogError($"Error: {ex.Message}", ex.ToString());
+
+                this.logger.LogError($"Error: {ex.Message}", ex.ToString()); 
                 return null;
             }
-        } 
-        
-        public bool ExistClient(int fiscalId)
+        }
+
+        public bool ExistUser(int id)
         {
             try
             {
-                return context.Clients.Any(cl => cl.FiscalId == fiscalId); ;
+                return context.Users.Any(usr => usr.Id == id);
             }
             catch (Exception ex)
             {
+
                 this.logger.LogError($"Error: {ex.Message}", ex.ToString());
                 return false;
             }
         }
+            
     }
-    }
+}

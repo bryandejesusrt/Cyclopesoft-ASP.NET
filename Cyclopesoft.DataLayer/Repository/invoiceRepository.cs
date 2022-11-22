@@ -1,28 +1,33 @@
-﻿using Cyclopesoft.DataLayer.Entities;
+﻿using Cyclopesoft.DataLayer.Context;
+using Cyclopesoft.DataLayer.Entities;
 using Cyclopesoft.DataLayer.Interface;
+using Microsoft.EntityFrameworkCore.Internal;
+using System.Linq;
 
 namespace Cyclopesoft.DataLayer.Repository
 {
-    public class invoiceRepository : InvoiceRepository
+    public class InvoiceRepository : IInvoiceRepository
     {
-        public void Delete(Invoice invoice)
+        private readonly CyclopesoftContext context;
+        public InvoiceRepository(CyclopesoftContext context)
         {
-            throw new System.NotImplementedException();
+            this.context = context;
         }
-
         public void Remove(Invoice invoice)
         {
-            throw new System.NotImplementedException();
+            context.Invoices.Remove(invoice);
         }
 
         public void Save(Invoice invoice)
         {
-            throw new System.NotImplementedException();
+            context.Invoices.Add(invoice);
         }
 
         public void Update(Invoice invoice)
         {
-            throw new System.NotImplementedException();
+            context.Invoices.Update(invoice);
         }
+        public Invoice GetInvoice(int id) => context.Invoices.Find(id);
+        public bool ExistInvoice(int id) => context.Invoices.Any(inv => inv.Id == id);
     }
 }

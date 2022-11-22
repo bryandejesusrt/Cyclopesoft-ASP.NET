@@ -4,24 +4,24 @@ using Cyclopesoft.DataLayer.Interface;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
+
 namespace Cyclopesoft.DataLayer.Repository
 {
-    public class ClientRepository : IClientRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly CyclopesoftContext context;
-        private readonly ILogger<ClientRepository> logger;
+        private readonly ILogger<InvoiceDetailRepository> logger;
 
-        public ClientRepository(CyclopesoftContext context, ILogger<ClientRepository> logger)
+        public ProductRepository(CyclopesoftContext context, ILogger<InvoiceDetailRepository> logger)
         {
             this.context = context;
             this.logger = logger;
         }
-
-        public void Remove(Client client)
+        public void Remove(Product product)
         {
             try
             {
-                context.Clients.Remove(client);
+                context.Products.Remove(product);
             }
             catch (Exception ex)
             {
@@ -30,11 +30,11 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Save(Client client)
+        public void Save(Product product)
         {
             try
             {
-                context.Clients.Add(client);
+                context.Products.Add(product);
             }
             catch (Exception ex)
             {
@@ -43,11 +43,11 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Update(Client client)
+        public void Update(Product product)
         {
             try
             {
-                context.Clients.Update(client);
+                context.Products.Update(product);
             }
             catch (Exception ex)
             {
@@ -55,24 +55,24 @@ namespace Cyclopesoft.DataLayer.Repository
                 this.logger.LogError($"Error: {ex.Message}", ex.ToString());
             }
         }
-        public Client GetClient(int fiscalId)
+        public Product GetProduct(int id)
         {
             try
             {
-                return context.Clients.Find(fiscalId);
+                return context.Products.Find(id);
             }
             catch (Exception ex)
             {
                 this.logger.LogError($"Error: {ex.Message}", ex.ToString());
                 return null;
             }
-        } 
-        
-        public bool ExistClient(int fiscalId)
+        }
+
+        public bool ExistProduct(int id)
         {
             try
             {
-                return context.Clients.Any(cl => cl.FiscalId == fiscalId); ;
+                return context.Products.Any(prd => prd.Id == id);
             }
             catch (Exception ex)
             {
@@ -81,4 +81,4 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
     }
-    }
+}

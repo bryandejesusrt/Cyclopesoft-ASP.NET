@@ -6,16 +6,16 @@ namespace Cyclopesoft.DataLayer.Core
     public abstract class BaseEntity
     {
         public BaseEntity(){
-            this.Creation_Date = DateTime.Now;
+            this.CreationDate = DateTime.Now;
             this.Deleted = false;
         }
         
-        public int Creation_User { get; set; }
-        public DateTime Creation_Date { get; set; }
-        public int? Modify_User { get; set; }
-        public DateTime? Modify_Date { get; set; }
-        public int? Delete_User { get; set; }
-        public DateTime Delete_Data { get; set; }
+        public int CreationUser { get; set; }
+        public DateTime CreationDate { get; set; }
+        public int? ModifyUser { get; set; }
+        public DateTime? ModifyDate { get; set; }
+        public int? DeleteUser { get; set; }
+        public DateTime DeleteData { get; set; }
         public bool Deleted { get; set; }
 
     }
