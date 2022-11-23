@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Services
 {
-    public class ClientService : IClientService
+    public class ClientService 
     {
     }
 }
