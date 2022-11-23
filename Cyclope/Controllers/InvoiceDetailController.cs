@@ -1,46 +1,42 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Reflection;
 
-namespace Cyclopesoft.Controler
+namespace Cyclope.Controllers
 {
-    public class Client : Controller
+    public class InvoiceDetailController : Controller
     {
-        // GET: Client
-
+        // GET: InvoiceDetailController
         public ActionResult Index()
         {
-            IEnumerable<Cyclopesoft.Model.Client> clients = new List<Cyclopesoft.Model.Client>() {
-              new Model.Client{ type ="Hola", Id_Fiscal = 1, RNC = "0213", business_Name = "Cyclopsoft", Note = "Hola", Creation_Date = System.DateTime.Now,}
+            IEnumerable<Cyclopesoft.Model.InvoiceDetail> invoiceDetails = new List<Cyclopesoft.Model.InvoiceDetail>()
+            {
+                new Cyclopesoft.Model.InvoiceDetail{Id = 1, Id_Product =  1 , Amount = 1, Sale_Price = 1, Discout = 1}
             };
-            return View(clients);
+            return View(invoiceDetails);
         }
 
-        // GET: Client/Details/5
+        // GET: InvoiceDetailController/Details/5
         public ActionResult Details(int id)
         {
-            
             return View();
         }
 
-        // GET: Client/Create
+        // GET: InvoiceDetailController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Client/Create
+        // POST: InvoiceDetailController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
             try
             {
-                
+                Cyclopesoft.Model.InvoiceDetail model = new Cyclopesoft.Model.InvoiceDetail();
                 return RedirectToAction(nameof(Index));
-                Model.Client client = new Model.Client();   
-
             }
             catch
             {
@@ -48,13 +44,13 @@ namespace Cyclopesoft.Controler
             }
         }
 
-        // GET: Client/Edit/5
+        // GET: InvoiceDetailController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Client/Edit/5
+        // POST: InvoiceDetailController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -69,13 +65,13 @@ namespace Cyclopesoft.Controler
             }
         }
 
-        // GET: Client/Delete/5
+        // GET: InvoiceDetailController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Client/Delete/5
+        // POST: InvoiceDetailController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
