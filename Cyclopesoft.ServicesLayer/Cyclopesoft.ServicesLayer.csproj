@@ -8,6 +8,10 @@
     <ProjectReference Include="..\Cyclopesoft.DataLayer\Cyclopesoft.DataLayer.csproj" />
   </ItemGroup>
 
-
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+    <Folder Include="Models\" />
+    <Folder Include="Validations\" />
+  </ItemGroup>
 
 </Project>
