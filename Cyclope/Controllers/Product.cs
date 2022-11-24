@@ -1,5 +1,6 @@
 ﻿ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Cyclope.Controllers
 {
@@ -8,7 +9,11 @@ namespace Cyclope.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Cyclopesoft.Model.Product> products = new List<Cyclopesoft.Model.Product>()
+            {
+                new Cyclopesoft.Model.Product { Id = 1, Bar_Code = "123434",Name = "COLGATE",Description = "BUENA" }
+            };
+            return View(products);
         }
 
         // GET: Product/Details/5

@@ -7,17 +7,95 @@
 <h1>Product</h1>
 
 <p>
-    <a asp-action="Create">New Product</a>
+    <a asp-action="Create">Create New Product</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bar_Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distribution)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost_Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sale_Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wholesale_Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Minimum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Maximum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bar_Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distribution)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost_Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sale_Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wholesale_Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minimum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maximum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

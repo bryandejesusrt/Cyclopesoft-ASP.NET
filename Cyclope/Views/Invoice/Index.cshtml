@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Cyclopesoft.Model.Invoice>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Invoice</h1>
+
+<p>
+    <a asp-action="Create">Create New Invoice</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Serie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RNC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Creation_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expiration_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Payment_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subtotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Taxes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RNC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creation_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expiration_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payment_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subtotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taxes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
