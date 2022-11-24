@@ -1,44 +1,45 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace Cyclope.Controllers
 {
-    public class InvoiceController : Controller
+    public class PersonController : Controller
     {
-        // GET: InvoiceController
+        // GET: PersonController
         public ActionResult Index()
         {
-            IEnumerable<Cyclopesoft.Model.Invoice> invoices = new List<Cyclopesoft.Model.Invoice>() { 
-             new Cyclopesoft.Model.Invoice{ Id = 1, Serie = "234",
-                 RNC = "34567",
-                 Expiration_Date = System.DateTime.Now}
+            IEnumerable<Cyclopesoft.Model.Person> people = new List<Cyclopesoft.Model.Person>() 
+            { 
+                new Cyclopesoft.Model.Person{Id = 1, 
+                    Name = "Wander", 
+                    LastName = "Garcia",
+                    Email= "Wander1@gmail.com", 
+                    Phone = "809-123-2354"}
             };
-
-            return View(invoices);
+            return View(people);
         }
 
-        // GET: InvoiceController/Details/5
+        // GET: PersonController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: InvoiceController/Create
+        // GET: PersonController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: InvoiceController/Create
+        // POST: PersonController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
             try
             {
-                Cyclopesoft.Model.Invoice invoice = new Cyclopesoft.Model.Invoice();
+                Cyclopesoft.Model.Person person = new Cyclopesoft.Model.Person();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -47,13 +48,13 @@ namespace Cyclope.Controllers
             }
         }
 
-        // GET: InvoiceController/Edit/5
+        // GET: PersonController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: InvoiceController/Edit/5
+        // POST: PersonController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -68,13 +69,13 @@ namespace Cyclope.Controllers
             }
         }
 
-        // GET: InvoiceController/Delete/5
+        // GET: PersonController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: InvoiceController/Delete/5
+        // POST: PersonController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
