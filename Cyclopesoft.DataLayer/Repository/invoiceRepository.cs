@@ -2,6 +2,7 @@
 using Cyclopesoft.DataLayer.Entities;
 using Cyclopesoft.DataLayer.Interface;
 using Microsoft.EntityFrameworkCore.Internal;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Cyclopesoft.DataLayer.Repository
@@ -29,5 +30,10 @@ namespace Cyclopesoft.DataLayer.Repository
         }
         public Invoice GetInvoice(int id) => context.Invoices.Find(id);
         public bool ExistInvoice(int id) => context.Invoices.Any(inv => inv.Id == id);
+
+        public IEnumerable<Invoice> GetInvoices()
+        {
+            return this.context.Invoices;
+        }
     }
 }
