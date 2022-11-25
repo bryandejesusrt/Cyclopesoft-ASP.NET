@@ -9,8 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Exceptions\" />
-    <Folder Include="Models\" />
     <Folder Include="Validations\" />
   </ItemGroup>
 

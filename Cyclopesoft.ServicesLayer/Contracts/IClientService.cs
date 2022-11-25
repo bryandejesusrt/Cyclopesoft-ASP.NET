@@ -13,5 +13,6 @@ namespace Cyclopesoft.ServicesLayer.Contracts
         ClientResponse UpdateClient(ClientUpdateDto clientSaveDto);
         ClientResponse RemoveClient(ClientRemoveDto clientSaveDto);
         ServiceResult GetClient();
+        ServiceResult GetClientInvoice();
     }
 }
