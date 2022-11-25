@@ -3,6 +3,7 @@ using Cyclopesoft.DataLayer.Entities;
 using Cyclopesoft.DataLayer.Interface;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Cyclopesoft.DataLayer.Repository
@@ -80,6 +81,13 @@ namespace Cyclopesoft.DataLayer.Repository
                 this.logger.LogError($"Error: {ex.Message}", ex.ToString());
                 return null;
             }
+        }
+
+        public IEnumerable<InvoiceDetail> GetInvoiceDetail()
+        {
+            
+                return this.context.InvoiceDetails;
+            
         }
     }
 }

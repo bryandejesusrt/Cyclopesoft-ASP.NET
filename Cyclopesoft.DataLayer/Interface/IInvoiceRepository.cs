@@ -1,4 +1,5 @@
 ﻿using Cyclopesoft.DataLayer.Entities;
+using System.Collections.Generic;
 
 namespace Cyclopesoft.DataLayer.Interface
 {
@@ -9,5 +10,6 @@ namespace Cyclopesoft.DataLayer.Interface
         void Remove(Invoice invoice);
         public Invoice GetInvoice(int id);
         public bool ExistInvoice(int id);
+        IEnumerable<Invoice> GetInvoices();
     }
 }

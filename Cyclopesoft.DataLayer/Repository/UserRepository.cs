@@ -3,6 +3,7 @@ using Cyclopesoft.DataLayer.Entities;
 using Cyclopesoft.DataLayer.Interface;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Cyclopesoft.DataLayer.Repository
@@ -82,6 +83,10 @@ namespace Cyclopesoft.DataLayer.Repository
                 return false;
             }
         }
-            
+
+        public IEnumerable<User> GetUsers()
+        {
+            return this.context.Users;
+        }
     }
 }
