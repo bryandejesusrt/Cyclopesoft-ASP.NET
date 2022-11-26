@@ -11,7 +11,10 @@ namespace Cyclope.Controllers
         {
             IEnumerable<Cyclopesoft.Model.Product> products = new List<Cyclopesoft.Model.Product>()
             {
-                new Cyclopesoft.Model.Product { Id = 1, Bar_Code = "123434",Name = "COLGATE",Description = "BUENA" }
+                new Cyclopesoft.Model.Product { Id = 1,
+                    Bar_Code = "123434",
+                    Name = "COLGATE",
+                    Description = "BUENA" }
             };
             return View(products);
         }

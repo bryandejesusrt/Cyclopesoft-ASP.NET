@@ -11,7 +11,10 @@ namespace Cyclope.Controllers
         {
             IEnumerable<Cyclopesoft.Model.InvoiceDetail> invoiceDetails = new List<Cyclopesoft.Model.InvoiceDetail>()
             {
-                new Cyclopesoft.Model.InvoiceDetail{Id = 1, Id_Product =  1 , Amount = 1, Sale_Price = 1, Discout = 1}
+                new Cyclopesoft.Model.InvoiceDetail
+                {Id = 1, Id_Product =  1
+                , Amount = 1, 
+                    Sale_Price = 1, Discout = 1}
             };
             return View(invoiceDetails);
         }

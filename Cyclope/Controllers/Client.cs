@@ -12,7 +12,12 @@ namespace Cyclopesoft.Controler
         public ActionResult Index()
         {
             IEnumerable<Cyclopesoft.Model.Client> clients = new List<Cyclopesoft.Model.Client>() {
-              new Model.Client{ type ="Hola", Id_Fiscal = 1, RNC = "0213", business_Name = "Cyclopsoft", Note = "Hola", Creation_Date = System.DateTime.Now,}
+              new Model.Client{ type ="Nota",
+                  Id_Fiscal = 1,
+                  RNC = "0213", 
+                  business_Name = "Cyclopsoft",
+                  Note = "Hola",
+                  Creation_Date = System.DateTime.Now,}
             };
             return View(clients);
         }
