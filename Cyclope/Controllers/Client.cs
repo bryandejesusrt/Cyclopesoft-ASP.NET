@@ -16,7 +16,7 @@ namespace Cyclopesoft.Controler
                   Id_Fiscal = 1,
                   RNC = "0213", 
                   business_Name = "Cyclopsoft",
-                  Note = "Hola",
+                  Note = "Nota",
                   Creation_Date = System.DateTime.Now,}
             };
             return View(clients);

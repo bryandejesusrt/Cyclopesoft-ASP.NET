@@ -11,7 +11,8 @@ namespace Cyclope.Controllers
         public ActionResult Index()
         {
             IEnumerable<Cyclopesoft.Model.Invoice> invoices = new List<Cyclopesoft.Model.Invoice>() { 
-                 new Cyclopesoft.Model.Invoice{ Id = 1, Serie = "234",
+                 new Cyclopesoft.Model.Invoice{ Id = 1,
+                 Serie = "234",
                  RNC = "34567",
                  Expiration_Date = System.DateTime.Now}
             };
