@@ -1,5 +1,6 @@
 ﻿using Cyclopesoft.DataLayer.Entities;
 using Cyclopesoft.DataLayer.Interface;
+using System.Collections.Generic;
 
 namespace Cyclopesoft.ServicesLayer.Services
 {
@@ -11,6 +12,11 @@ namespace Cyclopesoft.ServicesLayer.Services
         }
 
         public Client GetClient(int FiscalId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<Client> GetClients()
         {
             throw new System.NotImplementedException();
         }
