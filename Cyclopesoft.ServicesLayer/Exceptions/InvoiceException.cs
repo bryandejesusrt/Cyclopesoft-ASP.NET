@@ -6,6 +6,5 @@ namespace Cyclopesoft.ServicesLayer.Exceptions
 {
     public class InvoiceException
     {
-
     }
 }

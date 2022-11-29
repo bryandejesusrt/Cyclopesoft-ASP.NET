@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cyclopesoft.ServicesLayer.Models
+namespace Cyclopesoft.ServicesLayer.Exceptions
 {
-    public class InvoiceModel
+    public class InvoiceDetailException
     {
     }
 }

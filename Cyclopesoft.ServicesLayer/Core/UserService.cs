@@ -1,5 +1,4 @@
-﻿using Cyclopesoft.DataLayer.Interface;
-using Cyclopesoft.ServicesLayer.Contracts;
+﻿using Cyclopesoft.ServicesLayer.Contracts;
 using Cyclopesoft.ServicesLayer.Dtos;
 using Cyclopesoft.ServicesLayer.Responses;
 using System;
@@ -8,29 +7,29 @@ using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Core
 {
-    public class ProductService : IProductService
+    public class UserService : IUserService
     {
-        public ServiceResult GetProduct()
+        public ServiceResult GetUser()
         {
             throw new NotImplementedException();
         }
 
-        public ServiceResult GetProductInvoice()
+        public ServiceResult GetUserInvoice()
         {
             throw new NotImplementedException();
         }
 
-        public ProductResponse RemoveProduct(ProductRemoveDto productSaveDto)
+        public UserResponse RemoveUser(UserRemoveDto userSaveDto)
         {
             throw new NotImplementedException();
         }
 
-        public ProductResponse SaveProduct(ProductSaveDto productSaveDto)
+        public UserResponse SaveUser(UserSaveDto userSaveDto)
         {
             throw new NotImplementedException();
         }
 
-        public ProductResponse UpdateProduct(ProductUpdateDto productSaveDto)
+        public UserResponse UpdateUser(UserUpdateDto userSaveDto)
         {
             throw new NotImplementedException();
         }

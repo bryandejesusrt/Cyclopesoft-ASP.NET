@@ -9,10 +9,10 @@ namespace Cyclopesoft.ServicesLayer.Contracts
 {
     public interface IInvoiceService
     {
-        InvoiceResponse SaveInvoice(InvoiceSave invoiceSaveDto);
-        InvoiceResponse UpdateInvoice(InvoiceUpdate invoiceSaveDto);
-        InvoiceResponse RemoveInvoice(InvoiceRemove invoiceSaveDto);
-        ServiceResult GetClient();
+        InvoiceResponse SaveInvoice(InvoiceSaveDto invoiceSaveDto);
+        InvoiceResponse UpdateInvoice(InvoiceUpdateDto invoiceSaveDto);
+        InvoiceResponse RemoveInvoice(InvoiceRemoveDto invoiceSaveDto);
+        ServiceResult GetInvoice();
         ServiceResult GetInvoiceInvoice();
     }
 }

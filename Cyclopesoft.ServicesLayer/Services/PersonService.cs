@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cyclopesoft.ServicesLayer.Models
+namespace Cyclopesoft.ServicesLayer.Services
 {
-    public class InvoiceModel
+    public class PersonService : 
     {
+
     }
 }

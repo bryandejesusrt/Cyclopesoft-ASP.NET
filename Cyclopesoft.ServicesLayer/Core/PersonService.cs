@@ -1,35 +1,33 @@
 ﻿using Cyclopesoft.ServicesLayer.Contracts;
-using Cyclopesoft.ServicesLayer.Dtos;
-using Cyclopesoft.ServicesLayer.Responses;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Core
 {
-    public class InvoiceService : IInvoiceService
+    public class PersonService : IPersonService
     {
-        public ServiceResult GetInvoice()
+        public ServiceResult GetPerson()
         {
             throw new NotImplementedException();
         }
 
-        public ServiceResult GetInvoiceInvoice()
+        public ServiceResult GetPersonInvoice()
         {
             throw new NotImplementedException();
         }
 
-        public InvoiceResponse RemoveInvoice(InvoiceRemoveDto invoiceSaveDto)
+        public PersonResponse RemovePerson(PersonRemoveDto personSaveDto)
         {
             throw new NotImplementedException();
         }
 
-        public InvoiceResponse SaveInvoice(InvoiceSaveDto invoiceSaveDto)
+        public PersonResponse SavePerson(PersonSaveDto personSaveDto)
         {
             throw new NotImplementedException();
         }
 
-        public InvoiceResponse UpdateInvoice(InvoiceUpdateDto invoiceSaveDto)
+        public PersonResponse UpdatePerson(PersonUpdateDto personSaveDto)
         {
             throw new NotImplementedException();
         }

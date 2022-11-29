@@ -9,10 +9,10 @@ namespace Cyclopesoft.ServicesLayer.Contracts
 {
     public interface IProductService
     {
-        ProductResponse SaveClient(ProductSaveDto productSaveDto);
-        ProductResponse UpdateClient(ProductUpdateDto productSaveDto);
-        ProductResponse RemoveClient(ProductRemoveDto productSaveDto);
-        ServiceResult GetClient();
-        ServiceResult GetClientInvoice();
+        ProductResponse SaveProduct(ProductSaveDto productSaveDto);
+        ProductResponse UpdateProduct(ProductUpdateDto productSaveDto);
+        ProductResponse RemoveProduct(ProductRemoveDto productSaveDto);
+        ServiceResult GetProduct();
+        ServiceResult GetProductInvoice();
     }
 }

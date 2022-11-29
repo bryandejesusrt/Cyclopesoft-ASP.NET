@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Models
 {
-    public class InvoiceModel
+    public class PersonModel
     {
     }
 }

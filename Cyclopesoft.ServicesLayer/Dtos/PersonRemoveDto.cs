@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Dtos
 {
-    internal class InvoiceRemove
+    public class PersonRemoveDto
     {
         public int Id { get; set; }
         public int? DeleteUser { get; set; }
