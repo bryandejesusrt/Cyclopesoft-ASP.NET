@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Cyclopesoft.DataLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cyclopesoft.ServicesLayer.Responses
+namespace Cyclopesoft.ServicesLayer.Core
 {
-    public class InvoiceResponse : Core.ServiceResult
+    public class InvoiceDto : BaseDto
     {
-        public int Id { get; set; }
         public string Serie { get; set; }
         public string RNC { get; set; }
         public DateTime Expiration_Date { get; set; }

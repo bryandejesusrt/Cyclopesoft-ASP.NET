@@ -12,9 +12,9 @@ namespace Cyclopesoft.DataLayer.Core
     {
         private readonly DbContext dbContext;
         private readonly DbSet<TEntity> entities;
-        public RepositoryBase(DbContext dbContext)
+        public RepositoryBase(IDbFactory dbContext)
         {
-            this.dbContext = dbContext;
+            this.dbContext = dbContext.GetDbContext;
             this.entities = this.dbContext.Set<TEntity>();
         }
         public virtual void ExecuteProcedure(string procedureCommand, params SqlParameter[] sqlParams) => this.dbContext.Database.ExecuteSqlRaw(procedureCommand, sqlParams);

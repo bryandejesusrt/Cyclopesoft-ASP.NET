@@ -7,18 +7,20 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Cyclopesoft.DataLayer.Repository
 {
-    public class ClientRepository : IClientRepository
+    public class ClientRepository : Core.RepositoryBase<Client>, IClientRepository
     {
         private readonly CyclopesoftContext context;
         private readonly ILogger<ClientRepository> logger;
 
-        public ClientRepository(CyclopesoftContext context, ILogger<ClientRepository> logger)
+        public ClientRepository(CyclopesoftContext context, ILogger<ClientRepository> logger) : base(new DbFactory.DbFactory(context))
         {
             this.context = context;
             this.logger = logger;
         }
 
-        public void Remove(Client client)
+        IEnumerable<Client> IClientRepository.GetClientById(int fiscalId) => this.context.Clients.Where(clnt => clnt.Id == fiscalId);
+        public override IEnumerable<Client> GetEntities() => base.GetEntities().Where(cd => !cd.Deleted);
+        public override void Remove(Client client)
         {
             try
             {
@@ -31,7 +33,7 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Save(Client client)
+        public override void Save(Client client)
         {
             try
             {
@@ -44,7 +46,7 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Update(Client client)
+        public override void Update(Client client)
         {
             try
             {
@@ -56,35 +58,6 @@ namespace Cyclopesoft.DataLayer.Repository
                 this.logger.LogError($"Error: {ex.Message}", ex.ToString());
             }
         }
-        public Client GetClient(int fiscalId)
-        {
-            try
-            {
-                return context.Clients.Find(fiscalId);
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error: {ex.Message}", ex.ToString());
-                return null;
-            }
-        } 
         
-        public bool ExistClient(int fiscalId)
-        {
-            try
-            {
-                return context.Clients.Any(cl => cl.FiscalId == fiscalId); ;
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error: {ex.Message}", ex.ToString());
-                return false;
-            }
-        }
-
-        public IEnumerable<Client> GetClients()
-        {
-            return this.context.Clients;
-        }
     }
     }

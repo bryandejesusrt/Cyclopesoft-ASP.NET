@@ -8,17 +8,20 @@ using System.Linq;
 
 namespace Cyclopesoft.DataLayer.Repository
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : Core.RepositoryBase<Product>, IProductRepository
     {
         private readonly CyclopesoftContext context;
         private readonly ILogger<InvoiceDetailRepository> logger;
 
-        public ProductRepository(CyclopesoftContext context, ILogger<InvoiceDetailRepository> logger)
+        public ProductRepository(CyclopesoftContext context, ILogger<InvoiceDetailRepository> logger) : base(new DbFactory.DbFactory(context))
         {
             this.context = context;
             this.logger = logger;
         }
-        public void Remove(Product product)
+
+        IEnumerable<Product> IProductRepository.GetProductById(int id) => this.context.Products.Where(prd => prd.Id == id);
+        public override IEnumerable<Product> GetEntities() => base.GetEntities().Where(cd => !cd.Deleted);
+        public override void Remove(Product product)
         {
             try
             {
@@ -31,7 +34,7 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Save(Product product)
+        public override void Save(Product product)
         {
             try
             {
@@ -44,7 +47,7 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Update(Product product)
+        public override void Update(Product product)
         {
             try
             {
@@ -55,36 +58,6 @@ namespace Cyclopesoft.DataLayer.Repository
 
                 this.logger.LogError($"Error: {ex.Message}", ex.ToString());
             }
-        }
-        public Product GetProduct(int id)
-        {
-            try
-            {
-                return context.Products.Find(id);
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error: {ex.Message}", ex.ToString());
-                return null;
-            }
-        }
-
-        public bool ExistProduct(int id)
-        {
-            try
-            {
-                return context.Products.Any(prd => prd.Id == id);
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error: {ex.Message}", ex.ToString());
-                return false;
-            }
-        }
-
-        public IEnumerable<Product> GetProducts()
-        {
-            return this.context.Products;
         }
     }
 }

@@ -1,25 +1,29 @@
 ﻿using Cyclopesoft.DataLayer.Context;
+using Cyclopesoft.DataLayer.Core;
 using Cyclopesoft.DataLayer.Entities;
 using Cyclopesoft.DataLayer.Interface;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Cyclopesoft.DataLayer.Repository
 {
-    public class InvoiceDetailRepository : IInvoiceDetailRepository
+    public class InvoiceDetailRepository : Core.RepositoryBase<InvoiceDetail>, IInvoiceDetailRepository
     {
         private readonly CyclopesoftContext context;
         private readonly ILogger<InvoiceDetailRepository> logger;
 
-        public InvoiceDetailRepository(CyclopesoftContext context, ILogger<InvoiceDetailRepository> logger)
+        public InvoiceDetailRepository(CyclopesoftContext context, ILogger<InvoiceDetailRepository> logger) : base(new DbFactory.DbFactory(context))
         {
             this.context = context;
             this.logger = logger;
         }
 
-        public void Remove(InvoiceDetail invoiceDetail)
+        public IEnumerable<InvoiceDetail> GetInvoiceDetailsById(int id) => this.context.InvoiceDetails.Where(inv => inv.Id == id && !inv.Deleted);
+        public override IEnumerable<InvoiceDetail> GetEntities() => base.GetEntities().Where(cd => !cd.Deleted);
+        public override void Remove(InvoiceDetail invoiceDetail)
         {
             try
             {
@@ -32,7 +36,7 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Save(InvoiceDetail invoiceDetail)
+        public override void Save(InvoiceDetail invoiceDetail)
         {
             try
             {
@@ -45,7 +49,7 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Update(InvoiceDetail invoiceDetail)
+        public override void Update(InvoiceDetail invoiceDetail)
         {
             try
             {
@@ -56,38 +60,6 @@ namespace Cyclopesoft.DataLayer.Repository
 
                 this.logger.LogError($"Error: {ex.Message}", ex.ToString());
             }
-        }
-        public bool ExistInvoiceDetail(int id)
-        {
-            try
-            {
-                return context.InvoiceDetails.Any(inv => inv.Id == id);
-            }
-            catch (Exception ex)
-            {
-                this.logger.LogError($"Error: {ex.Message}", ex.ToString());
-                return false;
-            }
-        }
-        public InvoiceDetail GetInvoiceDetails(int id)
-        {
-            try
-            {
-                return context.InvoiceDetails.Find(id);
-            }
-            catch (Exception ex)
-            {
-
-                this.logger.LogError($"Error: {ex.Message}", ex.ToString());
-                return null;
-            }
-        }
-
-        public IEnumerable<InvoiceDetail> GetInvoiceDetail()
-        {
-            
-                return this.context.InvoiceDetails;
-            
         }
     }
 }

@@ -1,15 +1,11 @@
-﻿using Cyclopesoft.DataLayer.Entities;
+﻿using Cyclopesoft.DataLayer.Core;
+using Cyclopesoft.DataLayer.Entities;
 using System.Collections.Generic;
 
 namespace Cyclopesoft.DataLayer.Interface
 {
-    public interface IInvoiceRepository
+    public interface IInvoiceRepository : IRepositoryBase<Invoice>
     {
-        void Save(Invoice invoice);
-        void Update(Invoice invoice);
-        void Remove(Invoice invoice);
-        public Invoice GetInvoice(int id);
-        public bool ExistInvoice(int id);
-        IEnumerable<Invoice> GetInvoices();
+        IEnumerable<Invoice> GetInvoiceById(int id);
     }
 }

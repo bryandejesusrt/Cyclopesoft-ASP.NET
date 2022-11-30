@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cyclopesoft.DataLayer\Cyclopesoft.DataLayer.csproj" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Validations\" />
+    <ProjectReference Include="..\Cyclopesoft.DataLayer\Cyclopesoft.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

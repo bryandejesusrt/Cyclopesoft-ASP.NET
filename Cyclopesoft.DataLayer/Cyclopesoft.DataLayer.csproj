@@ -6,17 +6,16 @@
 
   <ItemGroup>
     <Compile Remove="Conceptual\**" />
+    <Compile Remove="Service\**" />
     <EmbeddedResource Remove="Conceptual\**" />
+    <EmbeddedResource Remove="Service\**" />
     <None Remove="Conceptual\**" />
+    <None Remove="Service\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.30" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.30" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Service\Interfaces\" />
   </ItemGroup>
 
 </Project>

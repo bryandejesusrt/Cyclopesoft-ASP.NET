@@ -1,15 +1,11 @@
-﻿using Cyclopesoft.DataLayer.Entities;
+﻿using Cyclopesoft.DataLayer.Core;
+using Cyclopesoft.DataLayer.Entities;
 using System.Collections.Generic;
 
 namespace Cyclopesoft.DataLayer.Interface
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepositoryBase<User>
     {
-        void Save(User user);
-        void Update(User user);
-        void Remove(User user);
-        public User GetUser(int id);
-        public bool ExistUser(int id);
-        IEnumerable<User> GetUsers();
+        IEnumerable<User> GetUserById(int id);
     }
 }

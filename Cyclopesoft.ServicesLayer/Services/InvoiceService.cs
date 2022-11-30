@@ -1,41 +1,184 @@
 ﻿using Cyclopesoft.DataLayer.Entities;
 using Cyclopesoft.DataLayer.Interface;
+using Cyclopesoft.DataLayer.Repository;
+using Cyclopesoft.ServicesLayer.Contracts;
+using Cyclopesoft.ServicesLayer.Core;
+using Cyclopesoft.ServicesLayer.Dtos;
+using Cyclopesoft.ServicesLayer.Models;
+using Cyclopesoft.ServicesLayer.Responses;
+using Cyclopesoft.ServicesLayer.Validations;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Services
 {
-    public class InvoiceService : IInvoiceRepository
+    public class InvoiceService : IInvoiceService
     {
-        public bool ExistInvoice(int id)
+        public readonly IInvoiceRepository invoiceRepository;
+        private readonly ILogger<InvoiceRepository> logger;
+
+        public InvoiceService(IInvoiceRepository invoiceRepository, ILogger<InvoiceRepository> logger)
         {
-            throw new NotImplementedException();
+            this.invoiceRepository = invoiceRepository;
+            this.logger = logger;
         }
 
-        public Invoice GetInvoice(int id)
+        public ServiceResult GetAll()
         {
-            throw new NotImplementedException();
+            ServiceResult result = new ServiceResult();
+            try
+            {
+                var invoices = invoiceRepository.GetEntities();
+
+                result.Data = invoices.Select(invoice => new InvoiceModel()
+                {
+                    Id = invoice.Id,
+                    Serie = invoice.Serie,
+                    RNC = invoice.RNC,
+                    Expiration_Date = invoice.Expiration_Date,
+                    Payment_Type = invoice.Payment_Type,
+                    Client_Id = invoice.Client_Id,
+                    User_Id = invoice.User_Id,
+                    Subtotal = invoice.Subtotal,
+                    Taxes = invoice.Taxes,
+                    Total = invoice.Total,
+                    Status = invoice.Status,
+                    Note = invoice.Note
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = "There was an error getting the invoice";
+                this.logger.LogError($"{result.Message}: {ex.Message}");
+                throw;
+            }
+            return result;
         }
 
-        public IEnumerable<Invoice> GetInvoices()
+        public ServiceResult GetById(int id)
         {
-            throw new NotImplementedException();
+            ServiceResult result = new ServiceResult();
+            try
+            {
+                var invoices = invoiceRepository.GetInvoiceById(id);
+
+                result.Data = invoices.Select(invoice => new InvoiceModel()
+                {
+                    Id = invoice.Id,
+                    Serie = invoice.Serie,
+                    RNC = invoice.RNC,
+                    Expiration_Date = invoice.Expiration_Date,
+                    Payment_Type = invoice.Payment_Type,
+                    Client_Id = invoice.Client_Id,
+                    User_Id = invoice.User_Id,
+                    Subtotal = invoice.Subtotal,
+                    Taxes = invoice.Taxes,
+                    Total = invoice.Total,
+                    Status = invoice.Status,
+                    Note = invoice.Note
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = "There was an error getting the invoice";
+                this.logger.LogError($"{result.Message}: {ex.Message}");
+                throw;
+            }
+            return result;
         }
 
-        public void Remove(Invoice invoice)
+        public InvoiceRemoveResponse RemoveInvoice(InvoiceRemoveDto invoiceRemoveDto)
         {
-            throw new NotImplementedException();
+            InvoiceRemoveResponse response = new InvoiceRemoveResponse();
+            try
+            {
+                var invoiceDelete = invoiceRepository.GetEntity(Convert.ToInt32(invoiceRemoveDto.Id));
+                invoiceDelete.DeleteDate = DateTime.Now;
+                invoiceRepository.Remove(invoiceDelete);
+                response.Message = "The invoice was succesfully removed";
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "There was an error removing the invoice";
+                this.logger.LogError($"{response.Message}: {ex.Message}");
+                throw;
+            }
+            return response;
         }
 
-        public void Save(Invoice invoice)
+        public InvoiceSaveResponse SaveInvoice(InvoiceSaveDto invoiceSaveDto)
         {
-            throw new NotImplementedException();
+            InvoiceSaveResponse response = new InvoiceSaveResponse();
+            try
+            {
+                var isValidInvoice = InvoiceValidations.AssertInvoiceIsValid(invoiceSaveDto);
+
+                if (!isValidInvoice.Success)
+                {
+                    response.Success = isValidInvoice.Success;
+                    response.Message = isValidInvoice.Message;
+                    return response;
+                }
+                if (invoiceRepository.Exists(inv => inv.Id == invoiceSaveDto.Id))
+                {
+                    response.Success = false;
+                    response.Message = "This invoice was already registered";
+                    return response;
+                }
+
+                var invoiceSave = new Invoice()
+                {
+                    Id = Convert.ToInt32(invoiceSaveDto.Id),
+                    Serie = invoiceSaveDto.Serie,
+                    RNC = invoiceSaveDto.RNC,
+                    Expiration_Date = invoiceSaveDto.Expiration_Date,
+                    Payment_Type = invoiceSaveDto.Payment_Type,
+                    Client_Id = invoiceSaveDto.Client_Id,
+                    User_Id = invoiceSaveDto.User_Id,
+                    Subtotal = invoiceSaveDto.Subtotal,
+                    Taxes = invoiceSaveDto.Taxes,
+                    Total = invoiceSaveDto.Total,
+                    Status = invoiceSaveDto.Status,
+                    Note = invoiceSaveDto.Note
+                };
+                invoiceRepository.Save(invoiceSave);
+                response.Message = "The invoice was saved succesfully";
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "There was an error saving the movie";
+                this.logger.LogError($"{response.Message}: {ex.Message}");
+                throw;
+            }
+            return response;
         }
 
-        public void Update(Invoice invoice)
+        public InvoiceUpdateResponse UpdateInvoice(InvoiceUpdateDto invoiceSaveDto)
         {
-            throw new NotImplementedException();
+            InvoiceUpdateResponse response = new InvoiceUpdateResponse();
+            try
+            {
+                var invoiceUpdate = invoiceRepository.GetEntity(Convert.ToInt32(invoiceSaveDto.Id));
+                invoiceUpdate.ModifyDate = DateTime.Now;
+                invoiceRepository.Update(invoiceUpdate);
+                response.Message = "The invoice was succesfully updated";
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "There was an error updating the invoice";
+                this.logger.LogError($"{response.Message}: {ex.Message}");
+                throw;
+            }
+            return response;
         }
     }
 }
+        

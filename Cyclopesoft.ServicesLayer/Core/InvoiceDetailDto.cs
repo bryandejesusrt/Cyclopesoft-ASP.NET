@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cyclopesoft.ServicesLayer.Services
+namespace Cyclopesoft.ServicesLayer.Core
 {
-    public class PersonService 
+    public class InvoiceDetailDto : BaseDto
     {
-
     }
 }

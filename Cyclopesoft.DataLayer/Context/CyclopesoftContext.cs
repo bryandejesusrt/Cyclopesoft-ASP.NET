@@ -9,6 +9,8 @@ namespace Cyclopesoft.DataLayer.Context
     public partial class CyclopesoftContext : DbContext
     {
         public CyclopesoftContext() { }
+        public CyclopesoftContext(DbContextOptions<CyclopesoftContext> options) : base(options) { }
+
         public DbSet<Client> Clients { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
         public DbSet<Invoice> Invoices { get; set; }

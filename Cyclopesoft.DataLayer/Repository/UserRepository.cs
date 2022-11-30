@@ -8,17 +8,20 @@ using System.Linq;
 
 namespace Cyclopesoft.DataLayer.Repository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : Core.RepositoryBase<User>, IUserRepository
     {
         private readonly CyclopesoftContext context;
         private readonly ILogger<InvoiceDetailRepository> logger;
 
-        public UserRepository(CyclopesoftContext context, ILogger<InvoiceDetailRepository> logger)
+        public UserRepository(CyclopesoftContext context, ILogger<InvoiceDetailRepository> logger) : base(new DbFactory.DbFactory(context))
         {
             this.context = context;
             this.logger = logger;
         }
-        public void Remove(User user)
+
+        IEnumerable<User> IUserRepository.GetUserById(int id) => this.context.Users.Where(usr => usr.Id == id);
+        public override IEnumerable<User> GetEntities() => base.GetEntities().Where(cd => !cd.Deleted);
+        public override void Remove(User user)
         {
             try
             {
@@ -31,7 +34,7 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Save(User user)
+        public override void Save(User user)
         {
             try
             {
@@ -44,7 +47,7 @@ namespace Cyclopesoft.DataLayer.Repository
             }
         }
 
-        public void Update(User user)
+        public override void Update(User user)
         {
             try
             {
@@ -55,38 +58,6 @@ namespace Cyclopesoft.DataLayer.Repository
 
                 this.logger.LogError($"Error: {ex.Message}", ex.ToString());
             }
-        }
-        public User GetUser(int id)
-        {
-            try
-            {
-                return context.Users.Find(id);
-            }
-            catch (Exception ex)
-            {
-
-                this.logger.LogError($"Error: {ex.Message}", ex.ToString()); 
-                return null;
-            }
-        }
-
-        public bool ExistUser(int id)
-        {
-            try
-            {
-                return context.Users.Any(usr => usr.Id == id);
-            }
-            catch (Exception ex)
-            {
-
-                this.logger.LogError($"Error: {ex.Message}", ex.ToString());
-                return false;
-            }
-        }
-
-        public IEnumerable<User> GetUsers()
-        {
-            return this.context.Users;
         }
     }
 }

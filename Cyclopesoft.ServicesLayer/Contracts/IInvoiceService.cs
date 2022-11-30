@@ -7,12 +7,10 @@ using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Contracts
 {
-    public interface IInvoiceService
+    public interface IInvoiceService : IBaseService
     {
-        InvoiceResponse SaveInvoice(InvoiceSaveDto invoiceSaveDto);
-        InvoiceResponse UpdateInvoice(InvoiceUpdateDto invoiceSaveDto);
-        InvoiceResponse RemoveInvoice(InvoiceRemoveDto invoiceSaveDto);
-        ServiceResult GetInvoice();
-        ServiceResult GetInvoiceInvoice();
+        public InvoiceSaveResponse SaveInvoice(InvoiceSaveDto invoiceSaveDto);
+        public InvoiceUpdateResponse UpdateInvoice(InvoiceUpdateDto invoiceSaveDto);
+        public InvoiceRemoveResponse RemoveInvoice(InvoiceRemoveDto invoiceSaveDto);
     }
 }

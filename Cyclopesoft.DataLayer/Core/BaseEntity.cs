@@ -15,7 +15,7 @@ namespace Cyclopesoft.DataLayer.Core
         public int? ModifyUser { get; set; }
         public DateTime? ModifyDate { get; set; }
         public int? DeleteUser { get; set; }
-        public DateTime DeleteData { get; set; }
+        public DateTime DeleteDate { get; set; }
         public bool Deleted { get; set; }
 
     }
