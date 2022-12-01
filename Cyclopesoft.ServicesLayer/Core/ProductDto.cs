@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cyclopesoft.ServicesLayer.Responses
+namespace Cyclopesoft.ServicesLayer.Core
 {
-    public class ProductResponse : Core.ServiceResult
+    public class ProductDto : BaseDto
     {
-        public int Id { get; set; }
         public string Bar_Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
