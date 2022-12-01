@@ -57,7 +57,7 @@ namespace Cyclopesoft.ServicesLayer.Validations
             if (product.Sale_Price == null)
             {
                 result.Success = false;
-                result.Message = "Product Sale_Price is missing";
+                result.Message = "Product Sale Price is missing";
                 return result;
             }
             if (product.Wholesale_Price == null)

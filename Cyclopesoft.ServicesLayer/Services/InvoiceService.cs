@@ -33,20 +33,20 @@ namespace Cyclopesoft.ServicesLayer.Services
             {
                 var invoices = invoiceRepository.GetEntities();
 
-                result.Data = invoices.Select(invoice => new InvoiceModel()
+                result.Data = invoices.Select(inv => new InvoiceModel()
                 {
-                    Id = invoice.Id,
-                    Serie = invoice.Serie,
-                    RNC = invoice.RNC,
-                    Expiration_Date = invoice.Expiration_Date,
-                    Payment_Type = invoice.Payment_Type,
-                    Client_Id = invoice.Client_Id,
-                    User_Id = invoice.User_Id,
-                    Subtotal = invoice.Subtotal,
-                    Taxes = invoice.Taxes,
-                    Total = invoice.Total,
-                    Status = invoice.Status,
-                    Note = invoice.Note
+                    Id = inv.Id,
+                    Serie = inv.Serie,
+                    RNC = inv.RNC,
+                    Expiration_Date = inv.Expiration_Date,
+                    Payment_Type = inv.Payment_Type,
+                    Client_Id = inv.Client_Id,
+                    User_Id = inv.User_Id,
+                    Subtotal = inv.Subtotal,
+                    Taxes = inv.Taxes,
+                    Total = inv.Total,
+                    Status = inv.Status,
+                    Note = inv.Note
                 }).ToList();
             }
             catch (Exception ex)
@@ -153,7 +153,7 @@ namespace Cyclopesoft.ServicesLayer.Services
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = "There was an error saving the movie";
+                response.Message = "There was an error saving the invoice";
                 this.logger.LogError($"{response.Message}: {ex.Message}");
                 throw;
             }

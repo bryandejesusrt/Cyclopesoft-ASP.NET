@@ -48,12 +48,6 @@ namespace Cyclopesoft.ServicesLayer.Validations
                 result.Message = "Invoice Note is missing";
                 return result;
             }
-            if (invoice.CreationUser == null)
-            {
-                result.Success = false;
-                result.Message = "Invoice Note is missing";
-                return result;
-            }
             if (invoice.CreationDate == null)
             {
                 result.Success = false;

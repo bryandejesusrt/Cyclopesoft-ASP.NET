@@ -14,25 +14,25 @@ namespace Cyclopesoft.ServicesLayer.Validations
             if (user.Name == null)
             {
                 result.Success = false;
-                result.Message = "User serial is missing";
+                result.Message = "User Name is missing";
                 return result;
             }
             if (user.LastName == null)
             {
                 result.Success = false;
-                result.Message = "Invoice RNC is missing";
+                result.Message = "Invoice LastName is missing";
                 return result;
             }
             if (user.Email == null)
             {
                 result.Success = false;
-                result.Message = "Invoice Expiration Date is missing";
+                result.Message = "Invoice Email is missing";
                 return result;
             }
             if (user.Phone == null)
             {
                 result.Success = false;
-                result.Message = "Invoice Payment Type is missing";
+                result.Message = "Invoice Phone is missing";
                 return result;
             }
             if (user.BusinessName == null)
@@ -44,7 +44,7 @@ namespace Cyclopesoft.ServicesLayer.Validations
             if (user.DirectIn == null)
             {
                 result.Success = false;
-                result.Message = "Invoice Directin is missing";
+                result.Message = "Invoice DirectIn is missing";
                 return result;
             }
             if (user.CreationUser == null)

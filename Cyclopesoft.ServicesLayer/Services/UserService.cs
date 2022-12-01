@@ -44,7 +44,7 @@ namespace Cyclopesoft.ServicesLayer.Services
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = "There was an error getting the invoice";
+                result.Message = "There was an error getting the user";
                 this.logger.LogError($"{result.Message}: {ex.Message}");
                 throw;
             }

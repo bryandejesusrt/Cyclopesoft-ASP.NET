@@ -157,7 +157,7 @@ namespace Cyclopesoft.ServicesLayer.Services
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = "There was an error saving the movie";
+                response.Message = "There was an error saving the product";
                 this.logger.LogError($"{response.Message}: {ex.Message}");
                 throw;
             }
