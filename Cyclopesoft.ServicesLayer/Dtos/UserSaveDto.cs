@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Cyclopesoft.ServicesLayer.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Dtos
 {
-    public class UserSaveDto
+    public class UserSaveDto : UserDto
     {
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -13,6 +14,6 @@ namespace Cyclopesoft.ServicesLayer.Dtos
         public string BusinessName { get; set; }
         public string DirectIn { get; set; }
         public int CreationUser { get; set; }
-        public DateTime CreationDate { get; set; }
+        
     }
 }

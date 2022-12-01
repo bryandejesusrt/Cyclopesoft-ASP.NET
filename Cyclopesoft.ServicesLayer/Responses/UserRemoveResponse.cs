@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Responses
 {
-    public class ProductResponse : Core.ServiceResult
+    public class UserRemoveResponse : UserResponse
     {
-
     }
 }

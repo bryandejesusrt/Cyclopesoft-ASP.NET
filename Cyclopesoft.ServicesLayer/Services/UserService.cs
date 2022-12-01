@@ -1,41 +1,160 @@
 ﻿using Cyclopesoft.DataLayer.Entities;
 using Cyclopesoft.DataLayer.Interface;
+using Cyclopesoft.DataLayer.Repository;
+using Cyclopesoft.ServicesLayer.Contracts;
+using Cyclopesoft.ServicesLayer.Core;
+using Cyclopesoft.ServicesLayer.Dtos;
+using Cyclopesoft.ServicesLayer.Models;
+using Cyclopesoft.ServicesLayer.Responses;
+using Cyclopesoft.ServicesLayer.Validations;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Services
 {
-    public class UserService : IUserRepository
+    public class UserService : IUserService
+
     {
-        public bool ExistUser(int id)
+        public readonly IUserRepository userRepository;
+        private readonly ILogger<UserRepository> logger;
+
+        public UserService(IUserRepository userRepository, ILogger<UserRepository> logger)
         {
-            throw new NotImplementedException();
+            this.userRepository = userRepository;
+            this.logger = logger;
+        }
+        public ServiceResult GetAll()
+        {
+            ServiceResult result = new ServiceResult();
+            try
+            {
+                var user = userRepository.GetEntities();
+               
+                result.Data = user.Select(usr => new UserModel()
+                {
+                   Password = usr.Password,
+                   Rol = usr.Rol,
+                   Img = usr.Img,
+                   Last_Connection = usr.Last_Connection,
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = "There was an error getting the invoice";
+                this.logger.LogError($"{result.Message}: {ex.Message}");
+                throw;
+            }
+            return result;
         }
 
-        public User GetUser(int id)
+        public ServiceResult GetById(int id)
         {
-            throw new NotImplementedException();
+            ServiceResult result = new ServiceResult();
+            try
+            {
+                var user = userRepository.GetUserById(id);
+
+                result.Data = user.Select(usr => new UserModel()
+                {
+                    Password = usr.Password,
+                    Rol = usr.Rol,
+                    Img = usr.Img,
+                    Last_Connection = usr.Last_Connection,
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = "There was an error getting the User";
+                this.logger.LogError($"{result.Message}: {ex.Message}");
+                throw;
+            }
+            return result;
         }
 
-        public IEnumerable<User> GetUsers()
+        public UserResponse RemoveUser(UserRemoveDto userRemoveDto)
         {
-            throw new NotImplementedException();
+            UserRemoveResponse response = new UserRemoveResponse();
+            try
+            {
+                var userDelete = userRepository.GetEntity(Convert.ToInt32(userRemoveDto.Id));
+                userDelete.DeleteDate = DateTime.Now;
+                userRepository.Remove(userDelete);
+                response.Message = "The user was succesfully removed";
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "There was an error removing the user";
+                this.logger.LogError($"{response.Message}: {ex.Message}");
+                throw;
+            }
+            return response;
         }
 
-        public void Remove(User user)
+        public UserResponse SaveUser(UserSaveDto userSaveDto)
         {
-            throw new NotImplementedException();
+            UserSaveResponse response = new UserSaveResponse();
+            try
+            {
+                var isValidUser = UserValidations.AssertUserIsValid(userSaveDto);
+
+                if (!isValidUser.Success)
+                {
+                    response.Success = isValidUser.Success;
+                    response.Message = isValidUser.Message;
+                    return response;
+                }
+                if (userRepository.Exists(inv => inv.Id == userSaveDto.Id))
+                {
+                    response.Success = false;
+                    response.Message = "This user was already registered";
+                    return response;
+                }
+
+                var userSave = new User()
+                {
+                     Password=userSaveDto.Password,
+                    Rol = userSaveDto.Rol,
+                   Img = userSaveDto.Img,
+                     Last_Connection= userSaveDto.Last_Connection,
+                    
+                };
+                userRepository.Save(userSave);
+                response.Message = "The user was saved succesfully";
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "There was an error saving the user";
+                this.logger.LogError($"{response.Message}: {ex.Message}");
+                throw;
+            }
+            return response;
         }
 
-        public void Save(User user)
+        public UserResponse UpdateUser(UserUpdateDto userSaveDto)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Update(User user)
-        {
-            throw new NotImplementedException();
+            UserUpdateResponse response = new UserUpdateResponse();
+            try
+            {
+                var userUpdate = userRepository.GetEntity(Convert.ToInt32(userSaveDto.Id));
+                userUpdate.ModifyDate = DateTime.Now;
+                userRepository.Update(userUpdate);
+                response.Message = "The user was succesfully updated";
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "There was an error updating the user";
+                this.logger.LogError($"{response.Message}: {ex.Message}");
+                throw;
+            }
+            return response;
         }
     }
 }

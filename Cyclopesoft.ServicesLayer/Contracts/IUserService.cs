@@ -7,12 +7,11 @@ using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Contracts
 {
-    public interface IUserService
+    public interface IUserService : IBaseService
     {
         UserResponse SaveUser(UserSaveDto userSaveDto);
-        UserResponse UpdateUser(UserUpdateDto userSaveDto);
-        UserResponse RemoveUser(UserRemoveDto userSaveDto);
-        ServiceResult GetUser();
-        ServiceResult GetUserInvoice();
+        UserResponse UpdateUser(UserUpdateDto userUpdateDto);
+        UserResponse RemoveUser(UserRemoveDto userRemoveDto);
+      
     }
 }

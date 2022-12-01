@@ -7,12 +7,12 @@ using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Contracts
 {
-    public interface IProductService : IBaseService
+    public interface IProductService
     {
-
         ProductResponse SaveProduct(ProductSaveDto productSaveDto);
         ProductResponse UpdateProduct(ProductUpdateDto productSaveDto);
         ProductResponse RemoveProduct(ProductRemoveDto productSaveDto);
-        
+        ServiceResult GetProduct();
+        ServiceResult GetProductInvoice();
     }
 }
