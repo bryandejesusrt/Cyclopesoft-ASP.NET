@@ -52,7 +52,7 @@ namespace Cyclopesoft.ServicesLayer.Services
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = "There was an error getting the User";
+                result.Message = "There was an error getting the invoice";
                 this.logger.LogError($"{result.Message}: {ex.Message}");
                 throw;
             }

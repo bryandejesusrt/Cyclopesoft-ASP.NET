@@ -7,6 +7,6 @@ namespace Cyclopesoft.ServicesLayer.Core
     public interface IBaseService
     {
         ServiceResult GetAll();
-        ServiceResult GetById(int Id);
+        ServiceResult GetById(int id);
     }
 }
