@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Cyclopesoft.ServicesLayer.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cyclopesoft.ServicesLayer.Dtos
 {
-    public class ClientRemoveDto
+    public class ClientRemoveDto : ClienteDto
     {
         public int Id { get; set; }
         public int? DeleteUser { get; set; }

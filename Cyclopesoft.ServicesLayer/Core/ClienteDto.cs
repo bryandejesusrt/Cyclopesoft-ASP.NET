@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cyclopesoft.DataLayer.Entities
+namespace Cyclopesoft.ServicesLayer.Core
 {
-    public class Client : Core.Person
+    public class ClienteDto : BaseDto
     {
         public DateTime EnrollomentDate;
-
         public string Type { get; set; }
         public int FiscalId { get; set; }
         public string RNC { get; set; }
