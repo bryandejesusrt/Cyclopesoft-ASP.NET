@@ -1,4 +1,4 @@
-﻿using Cyclopesoft.DataLayer.Entities;
+﻿/*using Cyclopesoft.DataLayer.Entities;
 using Cyclopesoft.DataLayer.Interface;
 using Cyclopesoft.DataLayer.Repository;
 using Cyclopesoft.ServicesLayer.Contracts;
@@ -183,3 +183,4 @@ namespace Cyclopesoft.ServicesLayer.Services
         }
     }
 }
+*/

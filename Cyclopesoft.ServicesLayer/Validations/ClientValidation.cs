@@ -1,4 +1,4 @@
-﻿using Cyclopesoft.ServicesLayer.Core;
+﻿/*using Cyclopesoft.ServicesLayer.Core;
 using Cyclopesoft.ServicesLayer.Dtos;
 using System;
 using System.Collections.Generic;
@@ -82,3 +82,4 @@ namespace Cyclopesoft.ServicesLayer.Validations
         }
     }
 }
+*/
