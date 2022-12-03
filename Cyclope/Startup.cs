@@ -1,3 +1,7 @@
+using Cyclopesoft.DataLayer.Interface;
+using Cyclopesoft.DataLayer.Repository;
+using Cyclopesoft.ServicesLayer.Contracts;
+using Cyclopesoft.ServicesLayer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +28,8 @@ namespace Cyclope
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            services.AddTransient<IInvoiceService, InvoiceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

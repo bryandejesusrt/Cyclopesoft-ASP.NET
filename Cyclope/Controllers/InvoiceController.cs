@@ -1,5 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Cyclope.Extentions;
+using Cyclopesoft.DataLayer.Entities;
+using Cyclopesoft.ServicesLayer.Contracts;
+using Cyclopesoft.ServicesLayer.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
@@ -7,15 +12,19 @@ namespace Cyclope.Controllers
 {
     public class InvoiceController : Controller
     {
+        private readonly ILogger<InvoiceController> _logger;
+        private readonly IInvoiceService _invoiceService;
+        public InvoiceController(ILogger<InvoiceController> logger, IInvoiceService invoiceService)
+        {
+            _logger = logger;
+            _invoiceService = invoiceService;
+        }
         // GET: InvoiceController
         public ActionResult Index()
         {
-            IEnumerable<Cyclopesoft.Model.Invoice> invoices = new List<Cyclopesoft.Model.Invoice>() { 
-                 new Cyclopesoft.Model.Invoice{ Id = 1,
-                 Serie = "234",
-                 RNC = "34567",
-                 Expiration_Date = System.DateTime.Now}
-            };
+            //IEnumerable<Cyclopesoft.Model.Invoice> invoices = _invoiceService.GetAll().Data;
+            //var invoices = (List<InvoiceModel>)_invoiceService.GetAll().Data;
+            var invoices = ((List<InvoiceModel>)_invoiceService.GetAll().Data).ConvertInvoiceModelToModel();
 
             return View(invoices);
         }
@@ -23,6 +32,7 @@ namespace Cyclope.Controllers
         // GET: InvoiceController/Details/5
         public ActionResult Details(int id)
         {
+            var invoice = ((InvoiceModel)_invoiceService.GetById(id).Data).ConvertInvoiceToModel();
             return View();
         }
 
@@ -51,6 +61,7 @@ namespace Cyclope.Controllers
         // GET: InvoiceController/Edit/5
         public ActionResult Edit(int id)
         {
+            var invoice = ((InvoiceModel)_invoiceService.GetById(id).Data).ConvertInvoiceToModel();
             return View();
         }
 

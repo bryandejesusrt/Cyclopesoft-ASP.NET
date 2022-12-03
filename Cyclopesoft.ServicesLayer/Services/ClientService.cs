@@ -41,7 +41,7 @@ namespace Cyclopesoft.ServicesLayer.Services
                     Email = cn.Email,
                     Phone = cn.Phone,
 
-                  }).ToList();
+                }).ToList();
             }
             catch (Exception ex)
             {
@@ -141,44 +141,45 @@ namespace Cyclopesoft.ServicesLayer.Services
             return response;
 
             public ClientResponse UpdateClient(ClientUpdateDto clientUpdateDto)
-        {
-            UserSaveResponse response = new UserSaveResponse();
-            try
             {
-                var isValidUser = UserValidations.AssertUserIsValid(userSaveDto);
-
-                if (!isValidUser.Success)
+                UserSaveResponse response = new UserSaveResponse();
+                try
                 {
-                    response.Success = isValidUser.Success;
-                    response.Message = isValidUser.Message;
-                    return response;
+                    var isValidUser = UserValidations.AssertUserIsValid(userSaveDto);
+
+                    if (!isValidUser.Success)
+                    {
+                        response.Success = isValidUser.Success;
+                        response.Message = isValidUser.Message;
+                        return response;
+                    }
+                    if (userRepository.Exists(inv => inv.Id == userSaveDto.Id))
+                    {
+                        response.Success = false;
+                        response.Message = "This user was already registered";
+                        return response;
+                    }
+
+                    var userSave = new User()
+                    {
+                        Password = userSaveDto.Password,
+                        Rol = userSaveDto.Rol,
+                        Img = userSaveDto.Img,
+                        Last_Connection = userSaveDto.Last_Connection,
+
+                    };
+                    userRepository.Save(userSave);
+                    response.Message = "The user was saved succesfully";
                 }
-                if (userRepository.Exists(inv => inv.Id == userSaveDto.Id))
+                catch (Exception ex)
                 {
                     response.Success = false;
-                    response.Message = "This user was already registered";
-                    return response;
+                    response.Message = "There was an error saving the user";
+                    this.logger.LogError($"{response.Message}: {ex.Message}");
+                    throw;
                 }
-
-                var userSave = new User()
-                {
-                    Password = userSaveDto.Password,
-                    Rol = userSaveDto.Rol,
-                    Img = userSaveDto.Img,
-                    Last_Connection = userSaveDto.Last_Connection,
-
-                };
-                userRepository.Save(userSave);
-                response.Message = "The user was saved succesfully";
+                return response;
             }
-            catch (Exception ex)
-            {
-                response.Success = false;
-                response.Message = "There was an error saving the user";
-                this.logger.LogError($"{response.Message}: {ex.Message}");
-                throw;
-            }
-            return response;
         }
     }
 }
