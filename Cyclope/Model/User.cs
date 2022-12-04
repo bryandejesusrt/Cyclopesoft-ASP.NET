@@ -1,15 +1,15 @@
 ﻿using Cyclopesoft.Model;
 using System;
 
-namespace Cyclope.Models
+namespace Cyclopesoft.Model
 {
     public class User: Person
     {
         public string Password { get; set; }
-        public int Rol { get; set; }
+        public string Rol { get; set; }
         public byte[] Img { get; set; }
         public DateTime Creation_Date { get; set; }
-        public DateTime Last_Connection { get; set; }
+        public TimeSpan Last_Connection { get; set; }
 
     }
 }

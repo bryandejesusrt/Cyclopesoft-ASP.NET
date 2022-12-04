@@ -9,6 +9,8 @@ namespace Cyclopesoft.ServicesLayer.Models
         public string Password { get; set; }
         public string Rol { get; set; }
         public byte[] Img { get; set; }
-        public DateTime Last_Connection { get; set; }
+        public DateTime Creation_Date { get; set; }
+        public TimeSpan Last_Connection { get; set; }
+
     }
 }
