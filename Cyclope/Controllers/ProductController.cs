@@ -1,21 +1,27 @@
-﻿ using Microsoft.AspNetCore.Http;
+﻿using Cyclope.Extentions;
+using Cyclopesoft.ServicesLayer.Contracts;
+using Cyclopesoft.ServicesLayer.Models;
+using Cyclopesoft.ServicesLayer.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
 namespace Cyclope.Controllers
 {
-    public class Product : Controller
+    public class ProductController : Controller
     {
+        private readonly ILogger<ProductController> _logger;
+        private readonly IProductService _productService;
+        public ProductController(ILogger<ProductController> logger, IProductService productService)
+        {
+            _logger = logger;
+            _productService = productService;
+        }
         // GET: Product
         public ActionResult Index()
         {
-            IEnumerable<Cyclopesoft.Model.Product> products = new List<Cyclopesoft.Model.Product>()
-            {
-                new Cyclopesoft.Model.Product { Id = 1,
-                    Bar_Code = "123434",
-                    Name = "COLGATE",
-                    Description = "BUENA" }
-            };
+            var products = ((List<ProductModel>)_productService.GetAll().Data).ConvertProductModelToModel();
             return View(products);
         }
 

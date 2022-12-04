@@ -8,10 +8,10 @@
         public string Description { get; set; }
         public string Distribution { get; set; }
         public byte[] Image { get; set; }
-        public int Cost_Price { get; set; }
-        public int Gain { get; set; }
-        public int Sale_Price { get; set; }
-        public int Wholesale_Price{ get; set; }
+        public decimal Cost_Price { get; set; }
+        public decimal Gain { get; set; }
+        public decimal Sale_Price { get; set; }
+        public decimal Wholesale_Price{ get; set; }
 
         //inventari
         public int Minimum { get; set; }

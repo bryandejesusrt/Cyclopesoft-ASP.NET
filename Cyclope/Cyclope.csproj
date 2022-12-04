@@ -12,4 +12,6 @@
     <ProjectReference Include="..\Cyclopesoft.ServicesLayer\Cyclopesoft.ServicesLayer.csproj" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/appsscript.json" /></VisualStudio></ProjectExtensions>
+
 </Project>

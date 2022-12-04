@@ -33,6 +33,8 @@ namespace Cyclope
             services.AddControllersWithViews();
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddTransient<IInvoiceService, InvoiceService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
