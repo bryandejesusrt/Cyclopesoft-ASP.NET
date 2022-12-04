@@ -54,7 +54,7 @@ namespace Cyclopesoft.ServicesLayer.Services
                 result.Success = false;
                 result.Message = "There was an error getting the invoice";
                 this.logger.LogError($"{result.Message}: {ex.Message}");
-                throw;
+                
             }
             return result;
         }

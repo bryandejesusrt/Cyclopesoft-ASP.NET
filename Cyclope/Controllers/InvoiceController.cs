@@ -22,8 +22,7 @@ namespace Cyclope.Controllers
         // GET: InvoiceController
         public ActionResult Index()
         {
-            //IEnumerable<Cyclopesoft.Model.Invoice> invoices = _invoiceService.GetAll().Data;
-            //var invoices = (List<InvoiceModel>)_invoiceService.GetAll().Data;
+            
             var invoices = ((List<InvoiceModel>)_invoiceService.GetAll().Data).ConvertInvoiceModelToModel();
 
             return View(invoices);
@@ -33,12 +32,13 @@ namespace Cyclope.Controllers
         public ActionResult Details(int id)
         {
             var invoice = ((InvoiceModel)_invoiceService.GetById(id).Data).ConvertInvoiceToModel();
-            return View();
+            return View(invoice);
         }
 
         // GET: InvoiceController/Create
         public ActionResult Create()
         {
+
             return View();
         }
 

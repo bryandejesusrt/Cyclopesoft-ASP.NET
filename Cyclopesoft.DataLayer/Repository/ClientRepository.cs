@@ -18,13 +18,13 @@ namespace Cyclopesoft.DataLayer.Repository
             this.logger = logger;
         }
 
-        IEnumerable<Client> IClientRepository.GetClientById(int fiscalId) => this.context.Clients.Where(clnt => clnt.Id == fiscalId);
-        public override IEnumerable<Client> GetEntities() => base.GetEntities().Where(cd => !cd.Deleted);
+        IEnumerable<Client> IClientRepository.GetClientById(int fiscalId) => this.context.Client.Where(clnt => clnt.Id == fiscalId);
+        public override IEnumerable<Client> GetEntities() => context.Client;
         public override void Remove(Client client)
         {
             try
             {
-                context.Clients.Remove(client);
+                context.Client.Remove(client);
             }
             catch (Exception ex)
             {
@@ -37,7 +37,7 @@ namespace Cyclopesoft.DataLayer.Repository
         {
             try
             {
-                context.Clients.Add(client);
+                context.Client.Add(client);
             }
             catch (Exception ex)
             {
@@ -50,7 +50,7 @@ namespace Cyclopesoft.DataLayer.Repository
         {
             try
             {
-                context.Clients.Update(client);
+                context.Client.Update(client);
             }
             catch (Exception ex)
             {

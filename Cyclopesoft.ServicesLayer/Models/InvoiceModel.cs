@@ -9,6 +9,7 @@ namespace Cyclopesoft.ServicesLayer.Models
         public int Id { get; set; }
         public string Serie { get; set; }
         public string RNC { get; set; }
+        public DateTime Creation_Date { get; set; }
         public DateTime Expiration_Date { get; set; }
         public string Payment_Type { get; set; }
         public int Client_Id { get; set; }

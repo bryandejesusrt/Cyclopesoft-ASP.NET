@@ -19,13 +19,13 @@ namespace Cyclopesoft.DataLayer.Repository
             this.logger = logger;
         }
 
-        IEnumerable<Product> IProductRepository.GetProductById(int id) => this.context.Products.Where(prd => prd.Id == id);
-        public override IEnumerable<Product> GetEntities() => base.GetEntities().Where(cd => !cd.Deleted);
+        IEnumerable<Product> IProductRepository.GetProductById(int id) => this.context.Product.Where(prd => prd.Id == id);
+        public override IEnumerable<Product> GetEntities() => context.Product;
         public override void Remove(Product product)
         {
             try
             {
-                context.Products.Remove(product);
+                context.Product.Remove(product);
             }
             catch (Exception ex)
             {
@@ -38,7 +38,7 @@ namespace Cyclopesoft.DataLayer.Repository
         {
             try
             {
-                context.Products.Add(product);
+                context.Product.Add(product);
             }
             catch (Exception ex)
             {
@@ -51,7 +51,7 @@ namespace Cyclopesoft.DataLayer.Repository
         {
             try
             {
-                context.Products.Update(product);
+                context.Product.Update(product);
             }
             catch (Exception ex)
             {

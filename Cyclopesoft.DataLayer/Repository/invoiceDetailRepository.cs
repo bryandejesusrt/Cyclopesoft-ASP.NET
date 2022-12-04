@@ -21,13 +21,13 @@ namespace Cyclopesoft.DataLayer.Repository
             this.logger = logger;
         }
 
-        public IEnumerable<InvoiceDetail> GetInvoiceDetailsById(int id) => this.context.InvoiceDetails.Where(inv => inv.Id == id && !inv.Deleted);
-        public override IEnumerable<InvoiceDetail> GetEntities() => base.GetEntities().Where(cd => !cd.Deleted);
+        public IEnumerable<InvoiceDetail> GetInvoiceDetailsById(int id) => this.context.InvoiceDetail.Where(inv => inv.Id == id && !inv.Deleted);
+        public override IEnumerable<InvoiceDetail> GetEntities() => context.InvoiceDetail;
         public override void Remove(InvoiceDetail invoiceDetail)
         {
             try
             {
-                context.InvoiceDetails.Remove(invoiceDetail);
+                context.InvoiceDetail.Remove(invoiceDetail);
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace Cyclopesoft.DataLayer.Repository
         {
             try
             {
-                context.InvoiceDetails.Add(invoiceDetail);
+                context.InvoiceDetail.Add(invoiceDetail);
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace Cyclopesoft.DataLayer.Repository
         {
             try
             {
-                context.InvoiceDetails.Update(invoiceDetail);
+                context.InvoiceDetail.Update(invoiceDetail);
             }
             catch (Exception ex)
             {

@@ -7,9 +7,9 @@ namespace Cyclope.Extentions
 {
     public static class InvoiceExtentions
     {
-        public static List<Invoice> ConvertInvoiceModelToModel(this List<InvoiceModel> invoiceModels)
+        public static IEnumerable<Cyclopesoft.Model.Invoice> ConvertInvoiceModelToModel(this List<InvoiceModel> invoiceModels)
         {
-            var invoices = invoiceModels.Select(inv => new Invoice()
+            var invoices = invoiceModels.Select(inv => new Cyclopesoft.Model.Invoice()
             {
                 Id = inv.Id,
                 Serie = inv.Serie,
