@@ -10,5 +10,7 @@ namespace Cyclopesoft.ServicesLayer.Core
         public DateTime? CreationDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public DateTime? DeletedDate { get; set; }
+        public int ModifyUser { get; set; }
+        public DateTime ModifyDate { get; set; }
     }
 }

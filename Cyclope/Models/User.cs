@@ -1,7 +1,7 @@
 ﻿using Cyclopesoft.Model;
 using System;
 
-namespace Cyclope.Models
+namespace Cyclope.Model
 {
     public class User: Person
     {

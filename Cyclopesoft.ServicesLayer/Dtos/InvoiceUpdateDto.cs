@@ -7,13 +7,6 @@ namespace Cyclopesoft.ServicesLayer.Dtos
 {
     public class InvoiceUpdateDto : InvoiceDto
     {
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string BusinessName { get; set; }
-        public string DirectIn { get; set; }
-        public int ModifyUser { get; set; }
-        public DateTime ModifyDate { get; set; }
+
     }
 }
