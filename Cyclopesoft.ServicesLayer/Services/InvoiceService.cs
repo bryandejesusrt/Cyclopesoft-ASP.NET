@@ -135,12 +135,17 @@ namespace Cyclopesoft.ServicesLayer.Services
 
                 var invoiceSave = new Invoice()
                 {
-                    Name = invoiceSaveDto.Name,
-                    LastName = invoiceSaveDto.LastName,
-                    Email = invoiceSaveDto.Email,
-                    Phone = invoiceSaveDto.Phone,
-                    BusinessName = invoiceSaveDto.BusinessName,
-                    DirectIn = invoiceSaveDto.DirectIn
+                    Serie = invoiceSaveDto.Serie,
+                    RNC = invoiceSaveDto.RNC,
+                    Expiration_Date = invoiceSaveDto.Expiration_Date,
+                    Payment_Type = invoiceSaveDto.Payment_Type,
+                    Client_Id = invoiceSaveDto.Client_Id,
+                    User_Id = invoiceSaveDto.User_Id,
+                    Subtotal = invoiceSaveDto.Subtotal,
+                    Taxes = invoiceSaveDto.Taxes,
+                    Total = invoiceSaveDto.Total,
+                    Status = invoiceSaveDto.Status,
+                    Note = invoiceSaveDto.Note
                 };
                 invoiceRepository.Save(invoiceSave);
                 response.Message = "The invoice was saved succesfully";
@@ -161,12 +166,17 @@ namespace Cyclopesoft.ServicesLayer.Services
             try
             {
                 var invoiceUpdate = invoiceRepository.GetEntity(Convert.ToInt32(invoiceSaveDto.Id));
-                invoiceUpdate.Name = invoiceSaveDto.Name;
-                invoiceUpdate.LastName = invoiceSaveDto.LastName;
-                invoiceUpdate.Email = invoiceSaveDto.Email;
-                invoiceUpdate.Phone = invoiceSaveDto.Phone;
-                invoiceUpdate.BusinessName = invoiceSaveDto.BusinessName;
-                invoiceUpdate.DirectIn = invoiceSaveDto.DirectIn;
+                invoiceUpdate.Serie = invoiceSaveDto.Serie;
+                invoiceUpdate.RNC = invoiceSaveDto.RNC;
+                invoiceUpdate.Expiration_Date = invoiceSaveDto.Expiration_Date;
+                invoiceUpdate.Payment_Type = invoiceSaveDto.Payment_Type;
+                invoiceUpdate.Client_Id = invoiceSaveDto.Client_Id;
+                invoiceUpdate.User_Id = invoiceSaveDto.User_Id;
+                invoiceUpdate.Subtotal = invoiceSaveDto.Subtotal;
+                invoiceUpdate.Taxes = invoiceSaveDto.Taxes;
+                invoiceUpdate.Total = invoiceSaveDto.Total;
+                invoiceUpdate.Status = invoiceSaveDto.Status;
+                invoiceUpdate.Note = invoiceSaveDto.Note;
                 invoiceUpdate.ModifyDate = DateTime.Now;
                 invoiceRepository.Update(invoiceUpdate);
                 response.Message = "The invoice was succesfully updated";

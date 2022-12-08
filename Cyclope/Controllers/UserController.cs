@@ -1,21 +1,27 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Cyclope.Extentions;
+using Cyclopesoft.ServicesLayer.Contracts;
+using Cyclopesoft.ServicesLayer.Models;
+using Cyclopesoft.ServicesLayer.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
 namespace Cyclope.Controllers
 {
     public class UserController : Controller
     {
+        private readonly ILogger<UserController> _logger;
+        private readonly IUserService _userService;
+        public UserController(ILogger<UserController> logger, IUserService userService)
+        {
+            _logger = logger;
+            _userService = userService;
+        }
         // GET: UserController
         public ActionResult Index()
         {
-            IEnumerable<Cyclope.Models.User> users = new List<Cyclope.Models.User>() 
-            { 
-            new Models.User{Password = "Wande12@", 
-                Rol = 12, 
-                Creation_Date = System.DateTime.Now, 
-                Last_Connection =  System.DateTime.Now}
-            };
+            var users = ((List<UserModel>)_userService.GetAll().Data).ConvertUserModelToModel();
             return View(users);
         }
 
@@ -38,7 +44,7 @@ namespace Cyclope.Controllers
         {
             try
             {
-                Models.User user = new Models.User();
+               Cyclopesoft .Model.User user = new Cyclopesoft.Model.User();
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -82,12 +82,17 @@ namespace Cyclope.Controllers
             var invoice = (InvoiceModel)_invoiceService.GetById(id).Data;
             InvoiceModel invoiceModel = new InvoiceModel()
             {
-                Name         = invoice.Name,
-                LastName     = invoice.LastName,
-                Email        = invoice.Email,
-                Phone        = invoice.Phone,
-                BusinessName = invoice.BusinessName,
-                DirectIn     = invoice.DirectIn
+                Serie = invoice.Serie,
+                RNC = invoice.RNC,
+                Expiration_Date = invoice.Expiration_Date,
+                Payment_Type = invoice.Payment_Type,
+                Client_Id = invoice.Client_Id,
+                User_Id = invoice.User_Id,
+                Subtotal = invoice.Subtotal,
+                Taxes = invoice.Taxes,
+                Total = invoice.Total,
+                Status = invoice.Status,
+                Note = invoice.Note
             };
             return View();
         }
@@ -99,15 +104,19 @@ namespace Cyclope.Controllers
         {
             try
             {
-                var currentModel = invoiceModel;
                 InvoiceUpdateDto invoice = new InvoiceUpdateDto()
                 {
-                    Name             = currentModel.Name,
-                    LastName         = currentModel.LastName,
-                    Email            = currentModel.Email,
-                    Phone            = currentModel.Phone,
-                    BusinessName     = currentModel.BusinessName,
-                    DirectIn         = currentModel.DirectIn
+                    Serie = invoiceModel.Serie,
+                    RNC = invoiceModel.RNC,
+                    Expiration_Date = invoiceModel.Expiration_Date,
+                    Payment_Type = invoiceModel.Payment_Type,
+                    Client_Id = invoiceModel.Client_Id,
+                    User_Id = invoiceModel.User_Id,
+                    Subtotal = invoiceModel.Subtotal,
+                    Taxes = invoiceModel.Taxes,
+                    Total = invoiceModel.Total,
+                    Status = invoiceModel.Status,
+                    Note = invoiceModel.Note
                 };
                 _invoiceService.UpdateInvoice(invoice);
                 return RedirectToAction(nameof(Index));
@@ -124,12 +133,17 @@ public ActionResult Delete(int id)
             var invoice = (InvoiceModel)_invoiceService.GetById(id).Data;
             InvoiceModel invoiceModel = new InvoiceModel()
             {
-                Name = invoice.Name,
-                LastName = invoice.LastName,
-                Email = invoice.Email,
-                Phone = invoice.Phone,
-                BusinessName = invoice.BusinessName,
-                DirectIn = invoice.DirectIn
+                Serie = invoice.Serie,
+                RNC = invoice.RNC,
+                Expiration_Date = invoice.Expiration_Date,
+                Payment_Type = invoice.Payment_Type,
+                Client_Id = invoice.Client_Id,
+                User_Id = invoice.User_Id,
+                Subtotal = invoice.Subtotal,
+                Taxes = invoice.Taxes,
+                Total = invoice.Total,
+                Status = invoice.Status,
+                Note = invoice.Note
             };
             return View(invoiceModel);
 }
@@ -144,12 +158,17 @@ public ActionResult Delete(InvoiceModel invoiceModel)
                 var currentModel = invoiceModel;
                 InvoiceRemoveDto invoiceRemove = new InvoiceRemoveDto()
                 {
-                    Name = currentModel.Name,
-                    LastName = currentModel.LastName,
-                    Email = currentModel.Email,
-                    Phone = currentModel.Phone,
-                    BusinessName = currentModel.BusinessName,
-                    DirectIn = currentModel.DirectIn
+                    Serie = invoiceModel.Serie,
+                    RNC = invoiceModel.RNC,
+                    Expiration_Date = invoiceModel.Expiration_Date,
+                    Payment_Type = invoiceModel.Payment_Type,
+                    Client_Id = invoiceModel.Client_Id,
+                    User_Id = invoiceModel.User_Id,
+                    Subtotal = invoiceModel.Subtotal,
+                    Taxes = invoiceModel.Taxes,
+                    Total = invoiceModel.Total,
+                    Status = invoiceModel.Status,
+                    Note = invoiceModel.Note
                 };
 
                 _invoiceService.RemoveInvoice(invoiceRemove);

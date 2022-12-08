@@ -20,11 +20,5 @@ namespace Cyclopesoft.ServicesLayer.Models
         public int Status { get; set; }
         public string Note { get; set; }
 
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string BusinessName { get; set; }
-        public string DirectIn { get; set; }
     }
 }
